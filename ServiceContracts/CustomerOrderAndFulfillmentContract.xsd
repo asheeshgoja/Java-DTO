@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org" xmlns:Namespace="CustomerOrderAndFulfillment.Contract" elementFormDefault="qualified" targetNamespace="http://tempuri.org"  xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="CommonSchemaElements.xsd" />
+
+  <xs:complexType name="CustomerOrder">
+    <xs:sequence>
+      <xs:element name="AddressInfo" type="Address" />
+      <xs:element name="Orders" type="OrderItem" maxOccurs="unbounded" />
+	  <xs:element name="CcInfo" type="CreditCardDetails"  />
+    </xs:sequence>
+    <xs:attribute name="OrderNumber" type="xs:string" />
+    <xs:attribute name="Rating" type="CreditRating"></xs:attribute>
+  </xs:complexType>
+  
+  <xs:element name="CustomerOrder" type="CustomerOrder"  />
+  
+  <xs:complexType name="FulfillmentRecord">
+    <xs:attribute name="FulfillmentRecordID" type="xs:string" />
+    <xs:attribute name="IsBackOrder" type="xs:boolean" />
+    <xs:attribute name="StorageTemperature" type="FuzzyCondition"></xs:attribute>
+	<xs:attribute name="CustomerOrderNo" type="xs:string" />
+  </xs:complexType>
+  
+  <xs:element name="FulfillmentRecord" type="FulfillmentRecord"  /> 
+  
+  
+  <xs:simpleType name="FuzzyCondition">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="100">
+        <xs:annotation>
+          <xs:documentation>Hot</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="200">
+        <xs:annotation>
+          <xs:documentation>VeryHot</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="300">
+        <xs:annotation>
+          <xs:documentation>ExtremelyHot</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="0">
+        <xs:annotation>
+          <xs:documentation>Cold</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="CreditRating">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="700">
+        <xs:annotation>
+          <xs:documentation>Good</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="750">
+        <xs:annotation>
+          <xs:documentation>VeryGood</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="790">
+        <xs:annotation>
+          <xs:documentation>ExtremelyGood</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="300">
+        <xs:annotation>
+          <xs:documentation>Poor</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  
+
+</xs:schema>

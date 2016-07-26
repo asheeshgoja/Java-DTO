@@ -15,3 +15,6 @@ Steps
 Note : 
 Make sure you run GenerateCrossPlatformDataBindings.bat anytime you make change to the xsds 
 in the CommonMessageContracts folder.
+
+Codeproject Article on this project:
+http://www.codeproject.com/Articles/154766/net-Java-interoperability-using-Service-Interface
